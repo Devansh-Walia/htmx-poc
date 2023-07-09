@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div
+         hx-on="htmx:configRequest: event.detail.headers=''; event.detail.headers['Content-Type']='application/x-www-form-urlencoded; charset=UTF-8'" />
+
+    <!-- have a button POST a click via AJAX -->
+    <button hx-get="http://127.0.0.1:10000" hx-swap="afterend">
+        Click Me
+    </button>
+    <button hx-get="http://127.0.0.1:10000/articles" hx-swap="afterend">
+        Click Me
+    </button>
+    </div>
+
+    <form hx-post="http://127.0.0.1:10000/article" hx-target="#status" style="display: flex; padding: 10px">
+        <input name="title" id="title" type="text" />
+        <input name="desc" id="desc" type="text" />
+        <input name="content" id="content" type="text" />
+        <input type="submit" />
+    </form>
+
+    <div id="status"></div>
+</body>
+
+<script src="https://unpkg.com/htmx.org@1.9.2"></script>
+
+
+</html>
